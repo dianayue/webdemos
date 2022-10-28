@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================ module */
+.w-title {
+  @apply px-4 py-2 font-semibold text-pink-600 rounded bg-cyan-200;
+}
+
+.w-card {
+  @apply p-4 bg-white rounded shadow;
+}

@@ -1,0 +1,133 @@
+// ====================================================================== 变量
+$design-width = 1200px
+$main-color = #FFD121
+$red = #FF4C21
+$orange = #FF4C21
+$blue = #1890FF
+$dblue = #418DF1
+$green = #19be6b
+$dblack = #2b2b2b
+$black = #161718
+$lblack = #555
+$dgray = #666
+$mgray = #999
+$gray = #9A9DA4
+$lgray = #aaa
+$dsilver = #ccc
+$silver = #e9e9e9
+$lsilver = #f8f8f8
+$bgcolor = #f5f5f5
+$bdcolor = $dsilver
+$bdradius = 10px
+$box-shadow = 0 0 30px rgba(0, 0, 0, .15)
+$assets = '@/img'
+
+// ====================================================================== 混合
+iconfont(size = inherit, color = inherit)
+  font-family 'iconfont' !important
+  font-size size
+  font-style normal
+  color color
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+// 表格条纹背景
+stripe(even = #fff, odd = #eee)
+  tr
+    background-color odd
+    &.even
+    &:nth-child(even)
+      background-color even
+
+// 单行省略号
+no-wrap()
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+
+// 多行省略号
+multi-line-nowrap($col)
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-line-clamp $col
+  overflow hidden
+
+// 三角
+arrow(direction = top, n = 6px, color = currentColor)
+  display inline-block
+  border n solid transparent
+  width 0
+  height 0
+  line-height 0
+  vertical-align middle
+  {'border-' + direction + '-color'} color
+
+// 占位符字体颜色
+placeholder(color = $dsilver)
+  &::-moz-placeholder
+    color color
+  &:-ms-input-placeholder
+    color color
+  &::-webkit-input-placeholder
+    color color
+
+// 美化滚动条
+beautify-scrollbar(color = #c7c7c7)
+  &::-webkit-scrollbar
+    height 10px
+    width 10px
+  &::-webkit-scrollbar-track
+    border-radius 5px
+    box-shadow inset 0 0 5px rgba(0, 0, 0, .1)
+    background #e8e8e8
+  &::-webkit-scrollbar-thumb
+    border-radius 5px
+    box-shadow inset 0 0 5px rgba(0, 0, 0, .2)
+    background color
+    // background-color skyblue
+    // background-image -webkit-linear-gradient(
+    //   45deg,
+    //   rgba(255, 255, 255, 0.2) 25%,
+    //   transparent 25%,
+    //   transparent 50%,
+    //   rgba(255, 255, 255, 0.2) 50%,
+    //   rgba(255, 255, 255, 0.2) 75%,
+    //   transparent 75%,
+    //   transparent
+    // )
+
+// 简化滚动条设置
+iscrollbar(arg1, arg2 = #c7c7c7)
+  if arg1 == beautify
+    beautify-scrollbar arg2
+  else if arg1 == hidden
+    scrollbar-width none
+    -ms-overflow-style none
+    &::-webkit-scrollbar
+      display none
+
+// 隐藏滚动条
+hiden-scrollbar()
+  scrollbar-width none // firefox
+  -ms-overflow-style none // IE10+
+  &::-webkit-scrollbar // Chrome & Safari
+    display none
+
+// 清除浮动
+clearfix()
+  zoom 1 if support-for-ie
+  &:before
+  &:after
+    content ''
+    display table
+  &:after
+    clear both
+
+// 扩展 overflow，增加 ellipsis 属性值
+overflow()
+  if arguments[0] == ellipsis
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+  else
+    overflow arguments

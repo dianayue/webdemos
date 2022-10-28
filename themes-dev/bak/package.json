@@ -1,0 +1,49 @@
+{
+  "name": "shunba",
+  "title": "shunba webapp",
+  "description": "顺巴乘客端",
+  "version": "v1.0.0",
+  "author": "steven",
+  "license": "MIT",
+  "keywords": [
+    "shunba",
+    "webapp",
+    "wechat",
+    "vue",
+    "stylus",
+    "gulp"
+  ],
+  "homepage": "https://wx.shunbus.com",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "dev": "opener http://localhost:9090",
+    "build": "gulp",
+    "rebuild": "gulp rebuild",
+    "server": "http-server -p 9090 dist/",
+    "livereload": "live-reload --port 9091 dist/"
+  },
+  "repository": {},
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-copy": "^1.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-logger": "^0.0.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-rev-append": "^0.1.8",
+    "gulp-sequence": "^0.4.6",
+    "gulp-tinyimg": "^0.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-usemin": "^0.3.28",
+    "nib": "^1.1.2"
+  }
+}

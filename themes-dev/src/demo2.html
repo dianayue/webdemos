@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deeyeco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .animation {
+      margin: 10px auto;
+      width: 1500px;
+      height: 574px;
+      background-color: #ccc;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body class="bg-blue-200">
+  <h1 class="text-xl font-bold text-center text-red-500 bg-yellow-300">逐帧动画</h1>
+  <div class="animation"></div>
+
+  <script src="js/animation.min.js"></script>
+  <script>
+    // 设置雪碧图
+    const sprite = ['img/sprite.png']
+
+    const $ = s => document.querySelector(s)
+    const animation = window.animation
+    const $elem = $('.animation')
+    const spritePositions = [
+      '0 0',
+      '0 -574',
+      '0 -1148',
+      '0 -1722',
+      '0 -2296',
+      '0 -2870',
+      '0 -3444',
+      '0 -4018',
+      '0 -4592',
+      '0 -5166',
+      '0 -5740',
+    ]
+
+    const app = animation()
+      .loadImage(sprite)
+      .changePosition($elem, spritePositions, sprite)
+      // .wait(1000)
+      // .repeat(3)
+      .repeatForever()
+      // .then(() => {
+      //   console.log('animation finished')
+      //   app.dispose()
+      // })
+      .start(100)
+  </script>
+</body>
+</html>

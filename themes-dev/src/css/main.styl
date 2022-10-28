@@ -1,0 +1,131 @@
+// 主样式表
+@import './tailwind.css'
+// @import './iconfont.css'
+// @import './reset'
+@import './var'
+
+body
+  margin 0 auto
+  overflow-y scroll
+  font-family 'SourceHanSans','sans-serif', Arial, 'Hiragino Sans GB',  Helvetica, 'Microsoft YaHei'
+  font-size 12px
+  // line-height 1.5
+  // overflow-x hidden
+  // user-select none
+  // -webkit-tap-highlight-color transparent
+  // -webkit-touch-callout none
+  -webkit-font-smoothing antialiased
+
+/* ============================================================ 通用 */
+// 隐藏 vue 未编译的标签
+[v-cloak]
+.hidden
+  display none !important
+
+// 隐藏元素
+.vhidden
+  visibility hidden !important
+
+// 溢出隐藏
+.ohidden
+  overflow hidden !important
+
+.clearfix
+  clearfix()
+
+.design-width
+  box-sizing border-box
+  margin 0 auto
+  width $design-width
+
+// ============================================================ 模块
+// 加载中
+.m-loading
+  animation spin 1s linear infinite
+
+// 通用空状态
+.m-empty
+  background #fff
+  .msg
+    color $black
+  .m-btn
+    margin-top 30px
+
+// 提示信息
+.m-notice
+  display flex
+  align-items center
+  justify-content center
+  font-size 14px
+  line-height 2
+  text-align center
+  color #fff
+  background $main-color
+  .icon
+    margin-right .3em
+    font-size 18px
+
+// require 小红点
+.m-require
+  position absolute
+  margin-top -5px
+  margin-left -7px
+  color $main-color
+
+// 遮罩
+.m-mask
+  position fixed
+  z-index 999
+  left 0
+  right 0
+  top 0
+  bottom 0
+  margin auto
+  background rgba(0, 0, 0, .4)
+
+// ============================================================ 布局
+// 通用布局
+.g-layout
+  display flex
+  flex-direction column
+  > .header
+    flex 0 0 auto
+    background $main-color
+    transition .3s
+    position relative
+
+  > .main
+    flex 1 0 auto
+    min-height 600px
+    clearfix()
+
+  > .footer
+    flex 0 0 auto
+    color $dgray
+    font-size 14px
+    line-height 1
+    background #fff
+    //background $black
+
+// ============================================================ 动画
+.fade-enter
+.fade-leave-active
+  opacity 0
+.fade-enter-active
+.fade-leave-active
+  transition opacity .3s
+.bounce-enter
+.bounce-leave-active
+  opacity 0
+  transform scale(.5)
+.bounce-enter-active
+.bounce-leave-active
+  transition .3s
+
+@keyframes spin
+  from
+    transform rotate(0deg)
+  50%
+    transform rotate(180deg)
+  to
+    transform rotate(360deg)

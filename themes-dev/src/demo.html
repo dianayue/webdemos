@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deeyeco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #TinyCanvas {
+      margin: 20px auto;
+      width: 1200px !important;
+      height: 800px !important;
+    }
+  </style>
+</head>
+<body class="bg-blue-200">
+  <h1 class="text-xl font-bold text-center text-red-500 bg-yellow-300">逐帧动画</h1>
+
+  <script src="https://unpkg.com/@tinyjs/tiny@1.6.1/tiny.js"></script>
+  <script>
+    // 创建一个加载器
+    // const loader = new Tiny.loaders.Loader()
+    // loader
+    //   // 添加 tileset 文件
+    //   .add('https://gw.alipayobjects.com/as/g/tiny/resources/1.0.0/images/tiles/mole_tile.json')
+    //   // 加载完成回调
+    //   .load(() => {
+    //     // 将 tileset 文件中定义的 frame 名放到数组 frames 中
+    //     let frames = ['ali_mole.png', 'ali_mole_hit.png']
+    //     // 调用 Tiny.AnimatedSprite 的静态方法 fromImages 来创建帧动画，入参就是上面的 frames 数组
+    //     const mc = Tiny.AnimatedSprite.fromImages(frames)
+    //     mc.play()
+    //     mc.stop()
+    //     mc.reverse() // 反转播放
+    //     mc.gotoAndPlay(3)
+    //     mc.gotoAndStop(3)
+    //     console.log(mc.currentFrame) // 当前帧
+    //   });
+
+    // 设置帧图数组
+    let images = [...Array(10).keys()].map(i => `img/frames/as-${i}.png`)
+
+    // 新建应用
+    const app = new Tiny.Application({
+      dpi: 3, // 分辨率
+      // showFPS: true, // 显示帧频
+      // renderOptions: {
+      //   backgroundColor: 0x2a3145, // 画布背景色
+      // },
+    })
+
+    // 新建场景
+    const scene = new Tiny.Container ()
+
+    // 通过 fromImage 实例化精灵
+    // const sprite = Tiny.Sprite.fromImage('img/app-bg.jpg')
+
+    // 设置精灵的中心点
+    // sprite.setAnchor(0.5)
+
+    // 设置精灵相对画布的位置，此处设置居中
+    // sprite.setPosition(Tiny.WIN_SIZE.width / 2, Tiny.WIN_SIZE.height / 2)
+    // sprite.width = Tiny.WIN_SIZE.width
+    // sprite.height = 'auto'
+
+    // 将精灵添加到场景中
+    // scene.addChild(sprite)
+
+    // 实例化帧动画
+    const mc = Tiny.AnimatedSprite.fromImages(images)
+
+    // 设置动画速度，值越大速度越快，1/60 相当于每秒一帧
+    // mc.animationSpeed = 1 / 60
+    mc.animationSpeed = 1 / 6
+
+    // 设置锚点为小人中心点
+    mc.setAnchor(0.5)
+
+    // 缩小一倍
+    // mc.setScale(0.5)
+
+    // 设置小人的位置为屏幕中心
+    mc.setPosition(Tiny.WIN_SIZE.width / 2, Tiny.WIN_SIZE.height / 2)
+
+    // 立即播放
+    mc.play()
+
+    // 设置小人可点击，点触后暂停／播放
+    mc.setEventEnabled(true)
+    mc.on('pointerdown', () => {
+      // 调用 Tiny.AnimatedSprite 的属性 playing
+      if (mc.playing) {
+        mc.stop()
+      } else {
+        mc.play()
+      }
+    })
+
+    scene.addChild(mc)
+    // scene.addChild(new Tiny.Text('点击精灵播放或暂停', {
+    //   fill: 'white',
+    // }))
+
+    // 启动
+    app.run(new StartLayer())
+  </script>
+</body>
+</html>
