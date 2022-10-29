@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Deeyeco</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .animation {
+      width: 600px;
+      height: 500px;
+      background-color: rgba(255, 255, 255, .08);
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <!-- <h1 class="text-xl font-bold text-center text-red-500 bg-yellow-300">逐帧动画</h1> -->
+  <div class="animation"></div>
+
+  <script src="js/animation.min.js"></script>
+  <script>
+    // 设置雪碧图
+    const sprite = ['img/sprite.png']
+
+    const $ = s => document.querySelector(s)
+    const animation = window.animation
+    const $elem = $('.animation')
+    const spritePositions = [
+      '0 0',
+      '0 -500',
+      '0 -1000',
+      '0 -1500',
+      '0 -2000',
+      '0 -2500',
+      '0 -3000',
+      '0 -3500',
+      '0 -4000',
+      '0 -4500',
+      '0 -5000',
+      '0 -5500',
+      '0 -6000',
+      '0 -6500',
+      '0 -7000',
+      '0 -7500',
+      '0 -8000',
+      '0 -8500',
+      '0 -9000',
+      '0 -9500',
+      '0 -10000',
+    ]
+
+    const app = animation()
+      .loadImage(sprite)
+      .changePosition($elem, spritePositions, sprite)
+      // .wait(1000)
+      // .repeat(3)
+      .repeatForever()
+      // .then(() => {
+      //   console.log('animation finished')
+      //   app.dispose()
+      // })
+      .start(88)
+  </script>
+</body>
+</html>
